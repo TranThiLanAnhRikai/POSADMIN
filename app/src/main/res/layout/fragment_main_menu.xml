@@ -2,123 +2,194 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainMenuFragment">
-    <data>
+    tools:context=".StartFragment">
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">-->
+      <data>
         <variable
             name="mainMenuFragment"
             type="com.example.pos_admin.MainMenuFragment" />
-        <variable
-            name="viewModel"
-            type="com.example.pos_admin.model.PosAdminViewModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+<!--    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/current_datetime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:text="@{() -> viewModel.getCurrentDateTime()}"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">-->
 
         <LinearLayout
-            android:id="@+id/today_weather"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/current_datetime"
-            android:background="@drawable/weather_info_background">
-
-            <ImageView
-                android:id="@+id/weather_image"
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
-
-
-            <TextView
-                android:id="@+id/weather_info_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Weather Info" />
-
-            <TextView
-                android:id="@+id/temperature"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Space for temperature" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/today_sale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/today_weather"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/weather_info_background"
-            >
-            <TextView
-                android:id="@+id/today_sale_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Today Sale"/>
-            <ImageView
-                android:id="@+id/today_sale_graph"
-                android:layout_width="100dp"
-                android:layout_height="100dp"/>
-            <Button
-                android:id="@+id/sales_analysis_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{() -> mainMenuFragment.goToSalesAnalysisFragment()}"/>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/today_shifts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/weather_info_background"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/today_weather"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="50dp"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/today_shifts_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Today Shifts" />
-            <TextView
-                android:id="@+id/morning_shift"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Space for morning shift"/>
-            <TextView
-                android:id="@+id/afternoon_shift"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Space for afternoon shift"/>
-            <TextView
-                android:id="@+id/noon_shift"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Space for noon shift"/>
 
-            <Button
-                android:id="@+id/shifts_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Shifts"
-                android:onClick="@{() -> mainMenuFragment.goToShiftsFragment()}"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/date_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="30dp"
+                    android:text="Datetime"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="250dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/weather_info_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/date_time">
+
+                    <TextView
+                        android:id="@+id/today_weather_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="Today Weather"
+                        android:textSize="20dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/today_weather_image"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="356dp"
+                android:layout_marginTop="30dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toLeftOf="@+id/secondView"
+                    android:background="@drawable/weather_info_background"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/today_sales_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Today Sales"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/sales_graph"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/today_sales_text" />
+
+                    <Button
+                        android:id="@+id/go_to_sales_analysis_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="168dp"
+                        android:onClick="@{() -> mainMenuFragment.goToSalesAnalysisFragment()}"
+                        android:text="Sales Analysis"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.761"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/sales_graph" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/secondView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/secondView"
+                    android:background="@drawable/weather_info_background"
+                    android:orientation="vertical"
+                    tools:layout_editor_absoluteX="206dp">
+
+                    <TextView
+                        android:id="@+id/today_shifts_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Today Shifts"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/today_shifts"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/today_shifts_text" />
+
+                    <Button
+                        android:id="@+id/go_to_shifts_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="160dp"
+                        android:onClick="@{() -> mainMenuFragment.goToShiftsFragment()}"
+                        android:text="Shifts"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/today_shifts" />
+                    /
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation_view"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
+                app:labelVisibilityMode="labeled"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/bottom_nav_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </layout>

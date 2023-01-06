@@ -30,8 +30,6 @@ class FirstLoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.firstloginFragment = this
     }
-
-     */
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null

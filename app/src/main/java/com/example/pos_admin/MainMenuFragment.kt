@@ -1,6 +1,7 @@
 package com.example.pos_admin
 
 import android.os.Bundle
+import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,8 +31,33 @@ class MainMenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.mainMenuFragment = this
+        //binding?.mainMenuFragment = this
+        binding?.bottomNavigationView?.setOnNavigationItemSelectedListener {
+            handleBottomNavigation(
+                it.itemId
+            )
+        }
+        binding?.bottomNavigationView?.selectedItemId = R.id.bottom_navigation_view
     }
+
+    private fun handleBottomNavigation(
+        menuItemId: Int
+    ): Boolean = when(menuItemId) {
+        R.id.main_menu_users_button -> {
+            findNavController().navigate(R.id.action_mainMenuFragment_to_usersFragment)
+            true
+        }
+        R.id.main_menu_menu_button -> {
+            findNavController().navigate(R.id.action_mainMenuFragment_to_menuFragment)
+            true
+        }
+        R.id.main_menu_notifications_button -> {
+            findNavController().navigate(R.id.action_mainMenuFragment_to_notificationsFragment)
+            true
+        }
+        else -> false
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -45,4 +71,5 @@ class MainMenuFragment : Fragment() {
     fun goToShiftsFragment() {
         findNavController().navigate(R.id.action_mainMenuFragment_to_shiftsFragment)
     }
+
 }
