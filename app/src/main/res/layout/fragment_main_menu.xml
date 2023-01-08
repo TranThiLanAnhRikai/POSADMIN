@@ -3,193 +3,176 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".StartFragment">
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">-->
       <data>
         <variable
             name="mainMenuFragment"
             type="com.example.pos_admin.MainMenuFragment" />
     </data>
 
-<!--    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">-->
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/datetime_weather_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/date_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="30dp"
+                android:text="Datetime"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/weather_info_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date_time">
+
+                <TextView
+                    android:id="@+id/today_weather_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="Today Weather"
+                    android:textSize="20dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/today_weather_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/datetime_weather_view"
+            android:orientation="horizontal">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="16dp"
+                android:layout_toLeftOf="@+id/secondView"
+                android:layout_weight="1"
+                android:background="@drawable/weather_info_background"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/date_time"
+                    android:id="@+id/today_sales_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="30dp"
-                    android:text="Datetime"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Today Sales"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="250dp"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/weather_info_background"
+                <ImageView
+                    android:id="@+id/sales_graph"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/date_time">
+                    app:layout_constraintTop_toBottomOf="@+id/today_sales_text" />
 
-                    <TextView
-                        android:id="@+id/today_weather_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:text="Today Weather"
-                        android:textSize="20dp"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/today_weather_image"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="356dp"
-                android:layout_marginTop="30dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+                <Button
+                    android:id="@+id/go_to_sales_analysis_btn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_toLeftOf="@+id/secondView"
-                    android:background="@drawable/weather_info_background"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/today_sales_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:text="Today Sales"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/sales_graph"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/today_sales_text" />
-
-                    <Button
-                        android:id="@+id/go_to_sales_analysis_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="168dp"
-                        android:onClick="@{() -> mainMenuFragment.goToSalesAnalysisFragment()}"
-                        android:text="Sales Analysis"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.761"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sales_graph" />
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <View
+                    android:layout_marginTop="168dp"
+                    android:onClick="@{() -> mainMenuFragment.goToSalesAnalysisFragment()}"
+                    android:text="Sales Analysis"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.761"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sales_graph" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--<View
                     android:id="@+id/secondView"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true" />-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/secondView"
+                android:layout_weight="1"
+                android:background="@drawable/weather_info_background"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="206dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/today_shifts_text"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_toRightOf="@+id/secondView"
-                    android:background="@drawable/weather_info_background"
-                    android:orientation="vertical"
-                    tools:layout_editor_absoluteX="206dp">
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Today Shifts"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/today_shifts_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:text="Today Shifts"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/today_shifts"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/today_shifts_text" />
 
-                    <ImageView
-                        android:id="@+id/today_shifts"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/today_shifts_text" />
-
-                    <Button
-                        android:id="@+id/go_to_shifts_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="160dp"
-                        android:onClick="@{() -> mainMenuFragment.goToShiftsFragment()}"
-                        android:text="Shifts"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/today_shifts" />
-                    /
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </RelativeLayout>
-
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation_view"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="10dp"
-                app:labelVisibilityMode="labeled"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:menu="@menu/bottom_nav_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
-
+                <Button
+                    android:id="@+id/go_to_shifts_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="160dp"
+                    android:onClick="@{() -> mainMenuFragment.goToShiftsFragment()}"
+                    android:text="Shifts"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/today_shifts" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
-
-
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_weight="1"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
+    </RelativeLayout>
 </layout>
