@@ -15,7 +15,7 @@ class FirstLoginFragment : Fragment() {
     private var binding: FragmentFirstLoginBinding? = null
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
-    private val sharedViewModel: PosAdminViewModel by activityViewModels()
+    private val viewModel: PosAdminViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

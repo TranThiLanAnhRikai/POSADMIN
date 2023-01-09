@@ -11,7 +11,7 @@
     <item
         android:id="@+id/main_menu_menu_button"
         android:icon="@drawable/ic_baseline_restaurant_menu_24"
-        android:title="Shifts" />
+        android:title="Menu" />
     <item
         android:id="@+id/main_menu_notifications_button"
         android:icon="@drawable/ic_baseline_circle_notifications_24"

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.pos_admin.databinding.FragmentFirstLoginBinding
 import com.example.pos_admin.databinding.FragmentSecondLoginBinding
 import com.example.pos_admin.model.PosAdminViewModel
 
@@ -29,7 +28,7 @@ class SecondLoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.secondloginFragment = this
+        binding?.secondLoginFragment = this
     }
 
     override fun onDestroyView() {
