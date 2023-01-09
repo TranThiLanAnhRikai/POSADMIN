@@ -15,7 +15,7 @@ class SecondLoginFragment : Fragment() {
     private var binding: FragmentSecondLoginBinding? = null
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
-    private val sharedViewModel: PosAdminViewModel by activityViewModels()
+    private val viewModel: PosAdminViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +29,7 @@ class SecondLoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.secondLoginFragment = this
+        binding?.viewModel = viewModel
     }
 
     override fun onDestroyView() {
@@ -37,9 +38,9 @@ class SecondLoginFragment : Fragment() {
     }
 
     fun goToNextScreen() {
-        if (sharedViewModel.isSecondLoginValid()) {
-            findNavController().navigate(R.id.action_secondLoginFragment_to_mainMenuFragment)
+       if (viewModel.isSecondLoginValid()) {
+           findNavController().navigate(R.id.action_secondLoginFragment_to_mainMenuFragment)
         }
 
-    }
+   }
 }
