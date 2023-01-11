@@ -26,6 +26,7 @@ abstract class ShiftRoomDatabase: RoomDatabase() {
                 instance
             }
         }
+
     }
 }
 
