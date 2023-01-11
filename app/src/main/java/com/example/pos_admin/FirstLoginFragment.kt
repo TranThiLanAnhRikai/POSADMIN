@@ -6,17 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.pos_admin.databinding.FragmentFirstLoginBinding
-import com.example.pos_admin.model.PosAdminViewModel
+import com.example.pos_admin.model.ShiftViewModel
 
 class FirstLoginFragment : Fragment() {
 
     private var binding: FragmentFirstLoginBinding? = null
 
 
-    private val viewModel: PosAdminViewModel by activityViewModels()
+    private val viewModel: ShiftViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

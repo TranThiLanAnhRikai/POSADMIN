@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.Flow
 interface ShiftDao {
     @Query("SELECT * FROM shifts_database")
     fun getShifts(): Flow<List<Shift>>
-    @Query("SELECT * FROM shifts_database WHERE date = :date")
-    fun getShift(date: String): Flow<Shift>
+    @Query("SELECT * FROM shifts_database WHERE date = :date AND shift_time = :shiftTime")
+    fun getShift(date: String, shiftTime: Int): Flow<Shift>
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(shift: Shift)
     @Update

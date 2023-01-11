@@ -12,6 +12,6 @@ data class Shift(
     val name: String,
     @ColumnInfo(name="date")
     val date: String,
-    @ColumnInfo(name="shift")
-    val shift: Int
+    @ColumnInfo(name="shift_time")
+    val shiftTime: Int
 )

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.pos_admin.model.PosAdminViewModel" />
+            type="com.example.pos_admin.model.ShiftViewModel" />
         <variable
             name="secondLoginFragment"
             type="com.example.pos_admin.SecondLoginFragment" />
