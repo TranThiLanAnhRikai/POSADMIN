@@ -5,14 +5,14 @@ import android.os.Handler
 import android.os.Looper
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.pos_admin.data.ShiftDao
 import org.json.JSONObject
 import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PosAdminViewModel: ViewModel() {
-
-
+class PosAdminViewModel(): ViewModel() {
 
     private val calendar: Calendar = Calendar.getInstance()
     private val currentDateTime: Date = calendar.time

@@ -3,12 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShiftsFragment">
+    tools:context=".UsersFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="USER FRAGMENT" />
 
-</FrameLayout>
+</FrameLayout><!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<layout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".ShiftsFragment">-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="SHIFTS"/>-->
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="viewModel"-->
+<!--            type="com.example.pos_admin.model.PosAdminViewModel" />-->
+<!--        <variable-->
+<!--            name="shifts"-->
+<!--            type="com.example.pos_admin.ShiftsFragment" />-->
+<!--    </data>-->
+
+<!--    <androidx.constraintlayout.widget.Constraints-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="SHIFTS"-->
+<!--            android:textSize="30sp"/>-->
+
+
+<!--    </androidx.constraintlayout.widget.Constraints>-->
+
