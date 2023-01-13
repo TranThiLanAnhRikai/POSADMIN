@@ -64,5 +64,7 @@ class ShiftsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         binding = null
     }
 
+    fun test() {
 
+    }
 }
