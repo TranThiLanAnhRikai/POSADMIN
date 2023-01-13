@@ -15,7 +15,6 @@ class FirstLoginFragment : Fragment() {
     private var binding: FragmentFirstLoginBinding? = null
 
 
-    private val viewModel: ShiftViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +28,6 @@ class FirstLoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.firstLoginFragment = this
-        binding?.viewModel = viewModel
     }
     override fun onDestroyView() {
         super.onDestroyView()

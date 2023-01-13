@@ -33,7 +33,6 @@
                 android:layout_marginTop="10dp"
                 android:textSize="30sp"
                 android:textStyle=""
-                android:text="@{@string/current_date_time(viewModel.formattedDateTime)}"
                 android:textColor="#1d355c"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

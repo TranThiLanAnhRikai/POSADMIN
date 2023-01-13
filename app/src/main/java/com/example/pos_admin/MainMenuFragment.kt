@@ -6,13 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
+import com.example.pos_admin.data.ShiftDao
+import com.example.pos_admin.data.ShiftRoomDatabase
 import com.example.pos_admin.databinding.FragmentMainMenuBinding
 import com.example.pos_admin.model.ShiftViewModel
+import com.example.pos_admin.model.ShiftViewModelFactory
+import com.example.pos_admin.repository.ShiftRepository
 import java.util.*
 
 class MainMenuFragment : Fragment() {
-    private val viewModel: ShiftViewModel by activityViewModels()
+    val shiftDao =
+        context?.let { Room.databaseBuilder(it, ShiftRoomDatabase::class.java, "shifts_database").build().shiftDao() }
+    val repository = shiftDao?.let { ShiftRepository(it) }
+    val factory = repository?.let { ShiftViewModelFactory(it) }
+    val viewModel = factory?.let { ViewModelProvider(this, it).get(ShiftViewModel::class.java) }
+
     private var binding: FragmentMainMenuBinding? = null
 //    val API: String = "6a238ea1bff80bfc12ddc7be3d2a0641"
 //    val CITY: String = "Tokyo,jp"
