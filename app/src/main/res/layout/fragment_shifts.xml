@@ -7,7 +7,7 @@
             name="viewModel"
             type="com.example.pos_admin.model.ShiftViewModel" />
         <variable
-            name="shifts"
+            name="shiftsFragment"
             type="com.example.pos_admin.ShiftsFragment" />
     </data>
 
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="SHIFTS"
             android:textSize="30sp"/>
-        <EditText
+       <EditText
             android:hint="Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,19 +33,22 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:text="@{viewModel.date}"/>
-        <EditText
+<!--        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:hint="Shift"
-            android:text="@{viewModel.shift}"/>
+            android:text="@={viewModel.shift}"/>-->
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit"
-            android:onClick="@{() -> viewModel.insert()}"/>
+            android:onClick="@{() -> viewModel.insertShift()}"/>
 
-
+<!--        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.nameInserted}"/>-->
 
     </LinearLayout>
 

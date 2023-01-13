@@ -11,24 +11,28 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ShiftViewModel(private val repository: ShiftRepository) : ViewModel() {
-    val name = MutableLiveData<String>()
+    var name = MutableLiveData<String>()
     val date = MutableLiveData<String>()
     val shift = MutableLiveData<Int>()
 
-    fun insert() {
-        val shiftname = name.value!!
+    fun insertShift() {
+        val shiftName = name.value!!
         val shiftDate = date.value!!
         val shift = shift.value!!
         viewModelScope.launch {
-            insert( Shift(0, shiftname, shiftDate, shift))
+            insert( Shift(0, "anh", "13/01", 1))
             Log.d(TAG, "shift submitted")
         }
+/*        name.value = ""
+        date.value = ""*/
     }
+
+
     // LiveData to hold the current shifts
     val shifts: Flow<List<Shift>> = repository.shifts
 
     // function to insert a new Shift
-    suspend fun insert(shift: Shift) {
+    private suspend fun insert(shift: Shift) {
         repository.insert(shift)
     }
 
