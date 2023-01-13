@@ -1,9 +1,6 @@
 package com.example.pos_admin
 
-import android.content.ContentValues.TAG
-import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,13 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.pos_admin.databinding.FragmentMainMenuBinding
-import com.example.pos_admin.model.PosAdminViewModel
-import org.json.JSONObject
-import java.net.URL
+import com.example.pos_admin.model.ShiftViewModel
+import com.example.pos_admin.model.ShiftViewModelFactory
 import java.util.*
 
 class MainMenuFragment : Fragment() {
-    private val viewModel: PosAdminViewModel by activityViewModels()
+    private val shiftViewModel: ShiftViewModel by activityViewModels {
+        ShiftViewModelFactory(
+            (activity?.application as ShiftApplication).database.shiftDao()
+        )
+    }
     private var binding: FragmentMainMenuBinding? = null
 //    val API: String = "6a238ea1bff80bfc12ddc7be3d2a0641"
 //    val CITY: String = "Tokyo,jp"
@@ -45,7 +45,7 @@ class MainMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.mainMenuFragment = this
-        binding?.viewModel = viewModel
+        binding?.viewModel = shiftViewModel
 
         binding?.bottomNavigationView?.setOnNavigationItemSelectedListener {
             handleBottomNavigation(

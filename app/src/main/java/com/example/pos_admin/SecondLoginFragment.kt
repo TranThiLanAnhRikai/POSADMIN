@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.pos_admin.databinding.FragmentSecondLoginBinding
-import com.example.pos_admin.model.PosAdminViewModel
+import com.example.pos_admin.model.ShiftViewModel
 
 class SecondLoginFragment : Fragment() {
 
     private var binding: FragmentSecondLoginBinding? = null
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
-    private val viewModel: PosAdminViewModel by activityViewModels()
+    private val viewModel: ShiftViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

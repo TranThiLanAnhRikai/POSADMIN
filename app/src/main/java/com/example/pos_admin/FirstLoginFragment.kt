@@ -6,17 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.pos_admin.databinding.FragmentFirstLoginBinding
-import com.example.pos_admin.model.PosAdminViewModel
+import com.example.pos_admin.model.ShiftViewModel
+import com.example.pos_admin.model.ShiftViewModelFactory
 
 class FirstLoginFragment : Fragment() {
 
     private var binding: FragmentFirstLoginBinding? = null
 
 
-    private val viewModel: PosAdminViewModel by activityViewModels()
+    private val shiftViewModel: ShiftViewModel by activityViewModels {
+        ShiftViewModelFactory(
+            (activity?.application as ShiftApplication).database.shiftDao()
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +34,7 @@ class FirstLoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.firstLoginFragment = this
-        binding?.viewModel = viewModel
+        binding?.viewModel = shiftViewModel
     }
     override fun onDestroyView() {
         super.onDestroyView()
