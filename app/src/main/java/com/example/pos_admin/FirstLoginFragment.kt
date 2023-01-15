@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
+import com.example.pos_admin.data.ShiftRoomDatabase
 import com.example.pos_admin.databinding.FragmentFirstLoginBinding
 import com.example.pos_admin.model.ShiftViewModel
 import com.example.pos_admin.model.ShiftViewModelFactory
@@ -14,6 +16,7 @@ import com.example.pos_admin.model.ShiftViewModelFactory
 class FirstLoginFragment : Fragment() {
 
     private var binding: FragmentFirstLoginBinding? = null
+    lateinit var database: ShiftRoomDatabase
 
 
     private val shiftViewModel: ShiftViewModel by activityViewModels {
@@ -28,6 +31,10 @@ class FirstLoginFragment : Fragment() {
     ): View? {
         val fragmentBinding = FragmentFirstLoginBinding.inflate(inflater, container, false)
         binding = fragmentBinding
+        database = Room.databaseBuilder(requireContext(), ShiftRoomDatabase::class.java, "shifts_database.db")
+            .build()
+
+
         return fragmentBinding.root
     }
 

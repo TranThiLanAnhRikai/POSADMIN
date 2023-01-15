@@ -1,5 +1,6 @@
 package com.example.pos_admin.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -17,7 +18,7 @@ interface ShiftDao {
     @Delete
     suspend fun delete(shift: Shift)
     @Query("SELECT * FROM shifts")
-    fun getShifts(): Flow<List<Shift>>
+    fun getAllShifts(): LiveData<List<Shift>>
     @Query("SELECT * FROM shifts WHERE date = :date AND shift_time = :shift")
-    fun getShift(date: String, shift: Int): Flow<Shift>
+    fun getShifts(date: String, shift: Int): LiveData<List<Shift>>
 }

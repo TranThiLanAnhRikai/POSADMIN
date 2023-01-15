@@ -46,7 +46,6 @@ class MainMenuFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.mainMenuFragment = this
         binding?.viewModel = shiftViewModel
-
         binding?.bottomNavigationView?.setOnNavigationItemSelectedListener {
             handleBottomNavigation(
                 it.itemId
