@@ -21,12 +21,12 @@
             android:layout_height="wrap_content"
             android:paddingTop="70dp"
             android:paddingLeft="100dp"
-            android:textSize="50sp"
+            android:textSize="40sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
         <LinearLayout
-            android:id="@+id/new_shift_info"
+            android:id="@+id/new_item_info"
             android:layout_width="450dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/add_new_item_text"
@@ -39,7 +39,8 @@
                 android:id="@+id/name_edttxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="40sp"
+                android:textSize="30sp"
+                android:layout_marginLeft="10dp"
                 android:layout_margin="5dp"
                 android:hint="Item Name"
                 android:text="@={menuViewModel.name}"/>
@@ -52,31 +53,33 @@
                     android:id="@+id/type_pick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="40sp"
-                    android:layout_margin="5dp"
-                    android:hint="Item Type"
-                    android:text="@={menuViewModel.type}"/>
+                    android:textSize="30sp"
+                    android:layout_margin="10dp"
+                    android:hint="Item Type"/>
             </LinearLayout>
 
             <EditText
                 android:id="@+id/price_edttxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:layout_margin="5dp"
+                android:textSize="30sp"
+                android:layout_margin="10dp"
                 android:hint="Item Price"
-                android:text="@={menuViewModel.price}"/>
+                android:text="@{menuViewModel.price}"/>
             <LinearLayout
+                android:id="@+id/img_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:orientation="horizontal">
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/ic_baseline_add_photo_alternate_24"/>
                 <TextView
                     android:id="@+id/add_img_text"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Capture image here or browse"/>
@@ -88,8 +91,13 @@
                 android:id="@+id/add_new_shift_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> addShiftsFragment.addNewShift()}"
+                android:onClick="@{() -> addMenuFragment.addNewItem()}"
                 android:text="Add"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="40dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_item_info"
                 android:textSize="30sp" />
 
 
