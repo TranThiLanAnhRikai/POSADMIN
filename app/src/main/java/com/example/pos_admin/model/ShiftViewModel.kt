@@ -1,5 +1,6 @@
 package com.example.pos_admin.model
 
+import android.content.ContentValues.TAG
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -11,15 +12,27 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import android.util.Log
-class ShiftViewModel(private val shiftDao: ShiftDao): ViewModel() {
-    fun getAllShifts(): LiveData<List<Shift>> {
+import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
+import com.example.pos_admin.const.ShiftTime
 
+class ShiftViewModel(private val shiftDao: ShiftDao): ViewModel() {
+
+    val inputName = MutableLiveData<String>()
+    val _date = MutableLiveData<String>()
+    val _shift = MutableLiveData<Int>()
+    fun getAllShifts(): LiveData<List<Shift>> {
             return shiftDao.getAllShifts()
     }
+
    fun insert() {
+        val name = inputName.value!!
         viewModelScope.launch {
-            shiftDao.insert(Shift(0,"lan","2023, 01, 17, Tuesday", 2))
+            shiftDao.insert(Shift(0, name, _date.value!!, _shift.value!!))
         }
+       inputName.value = ""
+       Log.d(TAG, "name $inputName.value")
+
     }
 
     fun getShifts(date: String, shift: Int): LiveData<List<Shift>> {

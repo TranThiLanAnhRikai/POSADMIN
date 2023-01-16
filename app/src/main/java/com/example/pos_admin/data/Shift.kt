@@ -3,6 +3,7 @@ package com.example.pos_admin.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.pos_admin.const.ShiftTime
 
 @Entity(tableName = "shifts")
 data class Shift(

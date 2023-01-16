@@ -7,15 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.pos_admin.application.PosAdminApplication
 import com.example.pos_admin.databinding.FragmentMainMenuBinding
 import com.example.pos_admin.model.ShiftViewModel
 import com.example.pos_admin.model.ShiftViewModelFactory
-import java.util.*
 
 class MainMenuFragment : Fragment() {
     private val shiftViewModel: ShiftViewModel by activityViewModels {
         ShiftViewModelFactory(
-            (activity?.application as ShiftApplication).database.shiftDao()
+            (activity?.application as PosAdminApplication).database.shiftDao()
         )
     }
     private var binding: FragmentMainMenuBinding? = null

@@ -16,11 +16,12 @@ import com.example.pos_admin.model.ShiftViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.lifecycle.Observer
+import com.example.pos_admin.application.PosAdminApplication
 
 class ShiftsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private val shiftViewModel: ShiftViewModel by activityViewModels {
         ShiftViewModelFactory(
-            (activity?.application as ShiftApplication).database.shiftDao()
+            (activity?.application as PosAdminApplication).database.shiftDao()
         )
     }
     private val calendar = Calendar.getInstance()
@@ -39,7 +40,6 @@ class ShiftsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         super.onViewCreated(view, savedInstanceState)
         binding?.shiftsFragment = this
         binding?.shiftViewModel = shiftViewModel
-        shiftViewModel.insert()
         binding?.shiftsDate?.setOnClickListener {
             DatePickerDialog(
                 requireContext(),
