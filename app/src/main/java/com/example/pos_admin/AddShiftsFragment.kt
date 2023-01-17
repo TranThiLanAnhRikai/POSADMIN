@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.pos_admin.application.PosAdminApplication
@@ -29,8 +28,9 @@ class AddShiftsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private var binding: FragmentAddShiftsBinding? = null
     private val calendar = Calendar.getInstance()
     private val formatter = SimpleDateFormat("yyyy, MM, dd, EEEE", Locale.US)
-    val shiftOptions =  arrayOf(ShiftTime.MORNING, ShiftTime.AFTERNOON, ShiftTime.NOON)
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+    val shiftOptions = arrayOf(ShiftTime.MORNING, ShiftTime.AFTERNOON, ShiftTime.NOON)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val fragmentBinding = FragmentAddShiftsBinding.inflate(inflater, container, false)
@@ -54,23 +54,23 @@ class AddShiftsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         val options = shiftOptions.map { it.name }.toTypedArray()
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Choose a shift")
-        builder.setItems(options) {_,which ->
+        builder.setItems(options) { _, which ->
             val selectedShiftTime = shiftOptions[which]
             binding?.shiftText?.text = selectedShiftTime.shiftName
             shiftViewModel._shift.value = selectedShiftTime.ordinal
-            }
+        }
 
 
         val dialog = builder.create()
         val container = binding?.shiftPickContainer
-        container?.setOnClickListener{
+        container?.setOnClickListener {
             dialog.show()
         }
 
-        shiftViewModel._shift.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+/*        shiftViewModel._shift.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             shiftViewModel.insert()
             Toast.makeText(requireContext(), "Shift added", Toast.LENGTH_SHORT).show()
-        })
+        })*/
 
     }
 
@@ -90,7 +90,7 @@ class AddShiftsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     }
 
     fun addNewShift() {
-        shiftViewModel.insert()
+        shiftViewModel.insertShift()
     }
 
     private fun displayFormattedDate(timeStamp: Long) {

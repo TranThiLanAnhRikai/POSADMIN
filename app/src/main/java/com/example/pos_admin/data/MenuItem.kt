@@ -1,8 +1,10 @@
 package com.example.pos_admin.data
 
+import android.graphics.Bitmap
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.File
 
 @Entity(tableName = "menu_items")
 data class MenuItem (
@@ -11,9 +13,9 @@ data class MenuItem (
     @ColumnInfo(name = "name")
     val name: String,
     @ColumnInfo(name = "type")
-    val type: Int,
+    val type: String,
     @ColumnInfo(name = "price")
-    val price: Double,
-    @ColumnInfo(name = "img_src")
+    val price: String,
+    @ColumnInfo(name = "img_path")
     val image: String
 )

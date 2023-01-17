@@ -1,14 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AddUsersFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="addUsersFragment"
+            type="com.example.pos_admin.AddUsersFragment" />
+        <variable
+            name="usersViewModel"
+            type="com.example.pos_admin.model.UsersViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="ADD USER FRAGMENT" />
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/add_new_user_text"
+            android:text="ADD NEW USER"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="70dp"
+            android:paddingLeft="100dp"
+            android:textSize="50sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+        <LinearLayout
+            android:id="@+id/new_user_info"
+            android:layout_width="450dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/add_new_user_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:orientation="vertical"
+            android:background="@drawable/login_round_corner_drawable"
+            android:layout_marginTop="40dp">
+            <EditText
+                android:id="@+id/name_edttxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:layout_margin="5dp"
+                android:hint="Name"
+                android:text="@={usersViewModel.inputName}"/>
+            <EditText
+                android:id="@+id/role_edttxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:layout_margin="5dp"
+                android:hint="Role"
+                android:text="@={usersViewModel.inputRole}"/>
+            <EditText
+                android:id="@+id/code_edttxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:layout_margin="5dp"
+                android:hint="Code"
+                android:text="@={usersViewModel.inputCode}"/>
+        </LinearLayout>
 
-</FrameLayout>
+        <LinearLayout
+            android:id="@+id/btn_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="150dp"
+            app:layout_constraintTop_toBottomOf="@+id/new_user_info">
+
+            <Button
+                android:id="@+id/back_to_users_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> addUsersFragment.backToUsers()}"
+                android:text="Back"
+                android:textSize="30sp" />
+
+            <Space
+                android:layout_width="250dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/add_new_user_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> addUsersFragment.addNewUser()}"
+                android:text="Add"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

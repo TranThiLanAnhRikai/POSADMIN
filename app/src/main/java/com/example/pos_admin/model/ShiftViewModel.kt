@@ -7,25 +7,23 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.pos_admin.data.Shift
 import com.example.pos_admin.data.ShiftDao
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import com.example.pos_admin.const.ShiftTime
 
 class ShiftViewModel(private val shiftDao: ShiftDao): ViewModel() {
 
     val inputName = MutableLiveData<String>()
     val _date = MutableLiveData<String>()
     val _shift = MutableLiveData<Int>()
+
     fun getAllShifts(): LiveData<List<Shift>> {
             return shiftDao.getAllShifts()
     }
 
-   fun insert() {
+   fun insertShift() {
         val name = inputName.value!!
         viewModelScope.launch {
             shiftDao.insert(Shift(0, name, _date.value!!, _shift.value!!))

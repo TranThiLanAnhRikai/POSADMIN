@@ -45,7 +45,7 @@
                 android:hint="Item Name"
                 android:text="@={menuViewModel.name}"/>
             <LinearLayout
-                android:id="@+id/shift_pick_container"
+                android:id="@+id/type_pick_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -65,7 +65,7 @@
                 android:textSize="30sp"
                 android:layout_margin="10dp"
                 android:hint="Item Price"
-                android:text="@{menuViewModel.price}"/>
+                android:text="@={menuViewModel._price}"/>
             <LinearLayout
                 android:id="@+id/img_container"
                 android:layout_width="wrap_content"
@@ -73,6 +73,7 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal">
                 <ImageView
+                    android:id="@+id/image"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_baseline_add_photo_alternate_24"/>
@@ -82,23 +83,39 @@
                     android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Capture image here or browse"/>
+                    android:text="Capture image here"/>
             </LinearLayout>
 
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="horizontal"
+            android:gravity="center">
             <Button
-                android:id="@+id/add_new_shift_btn"
+                android:id="@+id/back_to_menu_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:layout_marginLeft="30dp"
+                android:textSize="30sp"
+                android:onClick="@{() -> addMenuFragment.backToMenu()}"/>
+            <Space
+                android:layout_width="250dp"
+                android:layout_height="match_parent"/>
+            <Button
+                android:id="@+id/add_new_item_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> addMenuFragment.addNewItem()}"
                 android:text="Add"
                 android:layout_marginRight="40dp"
-                android:layout_marginBottom="40dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/new_item_info"
                 android:textSize="30sp" />
+        </LinearLayout>
+
 
 
 

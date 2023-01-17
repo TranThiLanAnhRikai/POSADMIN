@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/user_name"
+            android:textSize="30sp"
+            android:text="User Name"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+        <TextView
+            android:id="@+id/user_role"
+            android:textSize="30sp"
+            android:text="User Role"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+        <TextView
+            android:id="@+id/user_code"
+            android:textSize="30sp"
+            android:text="Login Code"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+    </LinearLayout>
+
+
+</layout>
