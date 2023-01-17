@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.pos_admin.adapter.ShiftsAdapter
 import com.example.pos_admin.adapter.UsersAdapter
@@ -62,10 +63,6 @@ class UsersFragment : Fragment() {
         binding = null
     }
 
-    fun addNewUser() {
-        usersViewModel.insertNewUser()
-
-    }
 
     fun goToNextScreen() {
         findNavController().navigate(R.id.action_usersFragment_to_addUsersFragment)

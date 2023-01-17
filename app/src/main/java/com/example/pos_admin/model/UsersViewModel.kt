@@ -1,11 +1,9 @@
 package com.example.pos_admin.model
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import com.example.pos_admin.data.User
 import com.example.pos_admin.data.UserDao
+import kotlinx.coroutines.launch
 
 
 class UsersViewModel(private val userDao: UserDao): ViewModel() {
@@ -18,7 +16,9 @@ class UsersViewModel(private val userDao: UserDao): ViewModel() {
     }
 
     fun insertNewUser() {
-
+        viewModelScope.launch {
+            userDao.insert(User(0, inputName.value!!, inputRole.value!!, inputCode.value!!))
+        }
     }
 
 }
