@@ -1,4 +1,4 @@
-package com.example.pos_admin.data
+package com.example.pos_admin.data.entity
 
 import android.graphics.Bitmap
 import androidx.room.ColumnInfo

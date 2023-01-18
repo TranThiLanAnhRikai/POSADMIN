@@ -26,6 +26,45 @@
             android:layout_marginLeft="80dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <TableLayout
+            android:id="@+id/table_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/users_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:stretchColumns="1, 2, 3, 4"
+            android:layout_margin="20dp"
+            android:paddingLeft="30dp">
+            <TableRow>
+                <TextView
+                    android:text="ID"
+                    android:textSize="20sp"
+                    android:layout_column="1"
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="NAME"
+                    android:textSize="20sp"
+                    android:layout_column="2"
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="ROLE"
+                    android:textSize="20sp"
+                    android:layout_column="3"
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="USER CODE"
+                    android:textSize="20sp"
+                    android:padding="10dp"
+                    android:layout_column="4"
+                    android:textStyle="bold"/>
+
+
+            </TableRow>
+        </TableLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/users"
@@ -36,14 +75,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layoutManager="LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/users_text" />
+            app:layout_constraintTop_toBottomOf="@+id/table_head" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="90dp"
             android:layout_marginBottom="20dp"
-            android:onClick="@{() -> usersFragment.goToNextScreen()}"
+            android:onClick="@{() -> usersFragment.nextFragment()}"
             android:text="Add New User"
             android:textSize="30sp"
             app:layout_constraintRight_toRightOf="parent"

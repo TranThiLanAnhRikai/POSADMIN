@@ -1,7 +1,8 @@
-package com.example.pos_admin.data
+package com.example.pos_admin.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.pos_admin.data.entity.Notification
 
 @Dao
 interface NotificationDao {

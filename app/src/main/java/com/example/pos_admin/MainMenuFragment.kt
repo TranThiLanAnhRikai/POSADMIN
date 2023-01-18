@@ -9,30 +9,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.pos_admin.application.PosAdminApplication
 import com.example.pos_admin.databinding.FragmentMainMenuBinding
-import com.example.pos_admin.model.ShiftViewModel
-import com.example.pos_admin.model.ShiftViewModelFactory
+import com.example.pos_admin.model.MainMenuViewModel
+import com.example.pos_admin.model.ShiftsViewModel
+
 
 class MainMenuFragment : Fragment() {
-    private val shiftViewModel: ShiftViewModel by activityViewModels {
-        ShiftViewModelFactory(
-            (activity?.application as PosAdminApplication).database.shiftDao()
-        )
-    }
     private var binding: FragmentMainMenuBinding? = null
-//    val API: String = "6a238ea1bff80bfc12ddc7be3d2a0641"
-//    val CITY: String = "Tokyo,jp"
-//    val url = "https://api.openweathermap.org/data/2.5/weather?q=$CITY&units=metric&appid=$API"
-//    val jsonString = url.readText()
-//    val jsonObj = JSONObject(jsonString)
-//    val main = jsonObj.getJSONObject("main")
-//    val sys = jsonObj.getJSONObject("sys")
-//    val wind = jsonObj.getJSONObject("wind")
-//    val weather = jsonObj.getJSONArray("weather").getJSONObject(0)
-//    temp = main.getString("temp")+"°C"
-//    tempMin = "Min Temp: " + main.getString("temp_min")+"°C"
-//    tempMax = "Max Temp: " + main.getString("temp_max")+"°C"
-//    windSpeed = wind.getString("speed")
-//    humidity = main.getString("humidity")
+    val mainMenuViewModel: MainMenuViewModel = MainMenuViewModel()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,7 +29,7 @@ class MainMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.mainMenuFragment = this
-        binding?.viewModel = shiftViewModel
+        binding?.mainMenuViewModel = mainMenuViewModel
         binding?.bottomNavigationView?.setOnNavigationItemSelectedListener {
             handleBottomNavigation(
                 it.itemId
@@ -78,11 +62,11 @@ class MainMenuFragment : Fragment() {
         binding = null
     }
 
-    fun goToSalesAnalysisFragment() {
+    fun toSalesAnalysisFragment() {
         findNavController().navigate(R.id.action_mainMenuFragment_to_salesAnalysisFragment)
     }
 
-    fun goToShiftsFragment() {
+    fun toShiftsFragment() {
         findNavController().navigate(R.id.action_mainMenuFragment_to_shiftsFragment)
     }
 }

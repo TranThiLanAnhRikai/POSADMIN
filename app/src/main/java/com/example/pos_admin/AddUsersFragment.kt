@@ -16,9 +16,12 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pos_admin.application.PosAdminApplication
 import com.example.pos_admin.const.ItemType
+import com.example.pos_admin.data.PosAdminRoomDatabase
+import com.example.pos_admin.data.repository.UserRepository
 import com.example.pos_admin.databinding.FragmentAddMenuBinding
 import com.example.pos_admin.databinding.FragmentAddUsersBinding
 import com.example.pos_admin.model.MenuViewModel
@@ -29,11 +32,7 @@ import java.io.ByteArrayOutputStream
 
 
 class AddUsersFragment : Fragment() {
-    private val usersViewModel: UsersViewModel by activityViewModels {
-        UsersViewModelFactory(
-            (activity?.application as PosAdminApplication).database.userDao()
-        )
-    }
+    private lateinit var usersViewModel: UsersViewModel
     private var binding: FragmentAddUsersBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +40,10 @@ class AddUsersFragment : Fragment() {
     ): View? {
         val fragmentBinding = FragmentAddUsersBinding.inflate(inflater, container, false)
         binding = fragmentBinding
+        val dao = PosAdminRoomDatabase.getDatabase(requireContext()).userDao()
+        val repository = UserRepository(dao)
+        val factory = UsersViewModelFactory(repository)
+        usersViewModel = ViewModelProvider(this, factory)[UsersViewModel::class.java]
         return fragmentBinding.root
     }
 

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pos_admin.R
-import com.example.pos_admin.data.User
+import com.example.pos_admin.data.entity.User
 
 
 class UsersAdapter(private val context: Context, private val listOfUsers: List<User>):

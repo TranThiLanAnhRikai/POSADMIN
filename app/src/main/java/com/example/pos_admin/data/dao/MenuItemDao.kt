@@ -1,7 +1,8 @@
-package com.example.pos_admin.data
+package com.example.pos_admin.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.pos_admin.data.entity.MenuItem
 
 @Dao
 interface MenuItemDao {
@@ -15,6 +16,5 @@ interface MenuItemDao {
     fun getAllMenuItems(): LiveData<List<MenuItem>>
     @Query("SELECT * FROM menu_items WHERE id = :id")
     fun getMenuItem(id: Int): LiveData<MenuItem>
-    @Query("SELECT img_path FROM menu_items WHERE id = :itemId")
-    fun getImagePath(itemId: Int): String
+
 }

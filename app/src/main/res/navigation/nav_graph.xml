@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
+    android:label="Store Menu"
     app:startDestination="@id/firstLoginFragment">
 
     <fragment
         android:id="@+id/firstLoginFragment"
         android:name="com.example.pos_admin.FirstLoginFragment"
-        android:label="@string/first_login_fragment"
+        android:label="2-step Login (First)"
         tools:layout="@layout/fragment_first_login">
         <action
             android:id="@+id/action_firstLoginFragment_to_secondLoginFragment"
@@ -17,17 +18,20 @@
     <fragment
         android:id="@+id/secondLoginFragment"
         android:name="com.example.pos_admin.SecondLoginFragment"
-        android:label="@string/second_login_fragment"
+        android:label="2-step Login (Second)"
         tools:layout="@layout/fragment_second_login">
         <action
             android:id="@+id/action_secondLoginFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
+        <action
+            android:id="@+id/action_secondLoginFragment_to_firstLoginFragment"
+            app:destination="@id/firstLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.example.pos_admin.MainMenuFragment"
-        android:label="fragment_main_menu"
-        tools:layout="@layout/fragment_main_menu" >
+        android:label="Main Menu"
+        tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_mainMenuFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
@@ -47,8 +51,8 @@
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.pos_admin.MenuFragment"
-        android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" >
+        android:label="Store menu"
+        tools:layout="@layout/fragment_menu">
         <action
             android:id="@+id/action_menuFragment_to_addMenuFragment"
             app:destination="@id/addMenuFragment" />
@@ -56,13 +60,13 @@
     <fragment
         android:id="@+id/notificationsFragment"
         android:name="com.example.pos_admin.NotificationsFragment"
-        android:label="fragment_notifications"
+        android:label="Notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/shiftsFragment"
         android:name="com.example.pos_admin.ShiftsFragment"
-        android:label="fragment_shifts"
-        tools:layout="@layout/fragment_shifts" >
+        android:label="Shifts"
+        tools:layout="@layout/fragment_shifts">
         <action
             android:id="@+id/action_shiftsFragment_to_addShiftsFragment"
             app:destination="@id/addShiftsFragment" />
@@ -70,8 +74,8 @@
     <fragment
         android:id="@+id/salesAnalysisFragment"
         android:name="com.example.pos_admin.SalesAnalysisFragment"
-        android:label="fragment_sales_analysis"
-        tools:layout="@layout/fragment_sales_analysis" >
+        android:label="Sales Analysis"
+        tools:layout="@layout/fragment_sales_analysis">
         <action
             android:id="@+id/action_salesAnalysisFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
@@ -79,8 +83,8 @@
     <fragment
         android:id="@+id/usersFragment"
         android:name="com.example.pos_admin.UsersFragment"
-        android:label="fragment_users"
-        tools:layout="@layout/fragment_users" >
+        android:label="Users"
+        tools:layout="@layout/fragment_users">
         <action
             android:id="@+id/action_usersFragment_to_addUsersFragment"
             app:destination="@id/addUsersFragment" />
@@ -88,8 +92,8 @@
     <fragment
         android:id="@+id/addMenuFragment"
         android:name="com.example.pos_admin.AddMenuFragment"
-        android:label="fragment_add_menu"
-        tools:layout="@layout/fragment_add_menu" >
+        android:label="Add New Item "
+        tools:layout="@layout/fragment_add_menu">
         <action
             android:id="@+id/action_addMenuFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
@@ -97,8 +101,8 @@
     <fragment
         android:id="@+id/addUsersFragment"
         android:name="com.example.pos_admin.AddUsersFragment"
-        android:label="fragment_add_users"
-        tools:layout="@layout/fragment_add_users" >
+        android:label="Add New User"
+        tools:layout="@layout/fragment_add_users">
         <action
             android:id="@+id/action_addUsersFragment_to_usersFragment"
             app:destination="@id/usersFragment" />
@@ -106,8 +110,8 @@
     <fragment
         android:id="@+id/addShiftsFragment"
         android:name="com.example.pos_admin.AddShiftsFragment"
-        android:label="fragment_add_shifts"
-        tools:layout="@layout/fragment_add_shifts" >
+        android:label="Add New Shift"
+        tools:layout="@layout/fragment_add_shifts">
         <action
             android:id="@+id/action_addShiftsFragment_to_shiftsFragment"
             app:destination="@id/shiftsFragment" />

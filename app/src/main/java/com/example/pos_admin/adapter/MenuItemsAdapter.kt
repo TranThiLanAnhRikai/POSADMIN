@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pos_admin.R
-import com.example.pos_admin.data.MenuItem
+import com.example.pos_admin.data.entity.MenuItem
 
 
 class MenuItemsAdapter(private val context: Context, private val listOfItems: List<MenuItem>):

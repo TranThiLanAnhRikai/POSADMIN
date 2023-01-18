@@ -1,4 +1,4 @@
-package com.example.pos_admin.data
+package com.example.pos_admin.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -7,7 +7,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import kotlinx.coroutines.flow.Flow
+import com.example.pos_admin.data.entity.Shift
 
 @Dao
 interface ShiftDao {

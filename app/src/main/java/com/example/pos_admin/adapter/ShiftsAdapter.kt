@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pos_admin.R
-import com.example.pos_admin.data.Shift
+import com.example.pos_admin.data.entity.Shift
 
 class ShiftsAdapter(private val context: Context, private val listOfShifts: List<Shift>):
     RecyclerView.Adapter<ShiftsAdapter.ShiftViewHolder>() {

@@ -1,14 +1,14 @@
 package com.example.pos_admin.model
 
-import android.widget.Toast
 import androidx.lifecycle.*
-import com.example.pos_admin.data.MenuItem
-import com.example.pos_admin.data.MenuItemDao
+import com.example.pos_admin.data.entity.MenuItem
+import com.example.pos_admin.data.dao.MenuItemDao
+import com.example.pos_admin.data.repository.MenuItemRepository
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
 
 
-class MenuViewModel(private val menuItemDao: MenuItemDao): ViewModel() {
+class MenuViewModel(private val menuItemRepository: MenuItemRepository): ViewModel() {
     val name = MutableLiveData<String>()
     val type = MutableLiveData<String>()
     val image = MutableLiveData<String>()
@@ -19,7 +19,7 @@ class MenuViewModel(private val menuItemDao: MenuItemDao): ViewModel() {
 
     fun insertItem() {
         viewModelScope.launch {
-            menuItemDao.insert(MenuItem(0, name.value!!, type.value!!, _price.value!!, image.value!!))
+            menuItemRepository.insert(MenuItem(0, name.value!!, type.value!!, _price.value!!, image.value!!))
         }
         name.value = ""
         type.value = ""
@@ -29,16 +29,16 @@ class MenuViewModel(private val menuItemDao: MenuItemDao): ViewModel() {
     }
 
     fun getAllMenuItems(): LiveData<List<MenuItem>> {
-        return menuItemDao.getAllMenuItems()
+        return menuItemRepository.items
     }
 
 }
 
-class MenuViewModelFactory(private val menuItemDao: MenuItemDao): ViewModelProvider.Factory{
+class MenuViewModelFactory(private val menuItemRepository: MenuItemRepository): ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MenuViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return MenuViewModel(menuItemDao) as T
+            return MenuViewModel(menuItemRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

@@ -5,8 +5,8 @@
     tools:context=".ShiftsFragment">
     <data>
         <variable
-            name="shiftViewModel"
-            type="com.example.pos_admin.model.ShiftViewModel" />
+            name="shiftsViewModel"
+            type="com.example.pos_admin.model.ShiftsViewModel" />
         <variable
             name="shiftsFragment"
             type="com.example.pos_admin.ShiftsFragment" />

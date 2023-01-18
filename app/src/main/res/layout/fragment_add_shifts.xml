@@ -8,8 +8,8 @@
             name="addShiftsFragment"
             type="com.example.pos_admin.AddShiftsFragment" />
         <variable
-            name="viewModel"
-            type="com.example.pos_admin.model.ShiftViewModel" />
+            name="shiftsViewModel"
+            type="com.example.pos_admin.model.ShiftsViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:textSize="40sp"
                 android:layout_margin="5dp"
                 android:hint="Name"
-                android:text="@={viewModel.inputName}"/>
+                android:text="@={shiftsViewModel.inputName}"/>
             <TextView
                 android:id="@+id/date_pick"
                 android:textSize="40sp"
@@ -82,7 +82,7 @@
                 android:id="@+id/back_to_shifts_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> addShiftsFragment.goBackToShiftsFragment()}"
+                android:onClick="@{() -> addShiftsFragment.previousFragment()}"
                 android:text="Back"
                 android:textSize="30sp" />
 

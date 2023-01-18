@@ -7,23 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.pos_admin.adapter.ShiftsAdapter
 import com.example.pos_admin.databinding.FragmentShiftsBinding
-import com.example.pos_admin.model.ShiftViewModel
-import com.example.pos_admin.model.ShiftViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.lifecycle.Observer
-import com.example.pos_admin.application.PosAdminApplication
+import androidx.lifecycle.ViewModelProvider
+import com.example.pos_admin.data.PosAdminRoomDatabase
+import com.example.pos_admin.data.repository.ShiftRepository
+import com.example.pos_admin.model.*
 
 class ShiftsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
-    private val shiftViewModel: ShiftViewModel by activityViewModels {
-        ShiftViewModelFactory(
-            (activity?.application as PosAdminApplication).database.shiftDao()
-        )
-    }
+    private lateinit var shiftsViewModel: ShiftsViewModel
     private val calendar = Calendar.getInstance()
     private val formatter = SimpleDateFormat("yyyy, MM, dd, EEEE", Locale.US)
     private var binding: FragmentShiftsBinding? = null
@@ -33,13 +29,18 @@ class ShiftsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     ): View? {
         val fragmentBinding = FragmentShiftsBinding.inflate(inflater, container, false)
         binding = fragmentBinding
+        //Get shiftsViewModel
+        val dao = PosAdminRoomDatabase.getDatabase(requireContext()).shiftDao()
+        val repository = ShiftRepository(dao)
+        val factory = ShiftsViewModelFactory(repository)
+        shiftsViewModel = ViewModelProvider(this, factory)[ShiftsViewModel::class.java]
         return fragmentBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.shiftsFragment = this
-        binding?.shiftViewModel = shiftViewModel
+        binding?.shiftsViewModel = shiftsViewModel
         binding?.shiftsDate?.setOnClickListener {
             DatePickerDialog(
                 requireContext(),
@@ -51,7 +52,7 @@ class ShiftsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
                 .show()
         }
         val recyclerView = binding?.shifts
-        shiftViewModel.getAllShifts().observe(viewLifecycleOwner, Observer { shifts ->
+        shiftsViewModel.getAllShifts().observe(viewLifecycleOwner, Observer { shifts ->
             val adapter = ShiftsAdapter(requireContext(), shifts)
             recyclerView?.adapter = adapter
         })
@@ -79,7 +80,7 @@ class ShiftsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     }
 
     private fun showShifts(selectedDate: String, shiftTime: Int) {
-        val listOfShifts = shiftViewModel.getShifts(selectedDate, shiftTime)
+        val listOfShifts = shiftsViewModel.getShifts(selectedDate, shiftTime)
         listOfShifts.observe(viewLifecycleOwner, Observer { shifts ->
             val recyclerView = binding?.shifts
             val adapter = ShiftsAdapter(requireContext(), shifts)

@@ -9,27 +9,34 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pos_admin.adapter.MenuItemsAdapter
 import com.example.pos_admin.adapter.ShiftsAdapter
 import com.example.pos_admin.application.PosAdminApplication
+import com.example.pos_admin.data.PosAdminRoomDatabase
+import com.example.pos_admin.data.repository.MenuItemRepository
+import com.example.pos_admin.data.repository.UserRepository
 import com.example.pos_admin.databinding.FragmentMenuBinding
 import com.example.pos_admin.model.MenuViewModel
 import com.example.pos_admin.model.MenuViewModelFactory
+import com.example.pos_admin.model.UsersViewModel
+import com.example.pos_admin.model.UsersViewModelFactory
 
 class MenuFragment : Fragment() {
-    private val menuViewModel: MenuViewModel by activityViewModels {
-        MenuViewModelFactory(
-            (activity?.application as PosAdminApplication).database.menuItemDao()
-        )
-    }
+    private lateinit var menuViewModel: MenuViewModel
    private var binding: FragmentMenuBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val fragmentBinding = FragmentMenuBinding.inflate(inflater, container, false)
         binding = fragmentBinding
+        val dao = PosAdminRoomDatabase.getDatabase(requireContext()).menuItemDao()
+        val repository = MenuItemRepository(dao)
+        val factory = MenuViewModelFactory(repository)
+        menuViewModel = ViewModelProvider(this, factory)[MenuViewModel::class.java]
         return fragmentBinding.root
     }
 
