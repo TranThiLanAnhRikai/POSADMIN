@@ -45,7 +45,29 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_new_user_text">
-
+            <RadioGroup
+                android:id="@+id/role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+                <RadioButton
+                    android:id="@+id/admin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admin"
+                    android:textSize="30sp"/>
+                <Space
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:id="@+id/staff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff"
+                    android:textSize="30sp"/>
+            </RadioGroup>
             <EditText
                 android:id="@+id/name_edttxt"
                 android:layout_width="match_parent"
@@ -57,23 +79,23 @@
                 android:textSize="40sp" />
 
             <EditText
-                android:id="@+id/role_edttxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:hint="Role"
-                android:paddingLeft="10dp"
-                android:text="@={usersViewModel.inputRole}"
-                android:textSize="40sp" />
-
-            <EditText
-                android:id="@+id/code_edttxt"
+                android:id="@+id/first_code_edttxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:hint="Code"
                 android:paddingLeft="10dp"
-                android:text="@={usersViewModel.inputCode}"
+                android:text="@={usersViewModel.firstCode}"
+                android:textSize="40sp" />
+            <EditText
+                android:id="@+id/second_code_edttxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:hint="Code"
+                android:paddingLeft="10dp"
+                android:visibility="gone"
+                android:text="@={usersViewModel.secondCode}"
                 android:textSize="40sp" />
 
         </LinearLayout>

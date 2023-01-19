@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:stretchColumns="1, 2, 3, 4">
+    android:stretchColumns="1, 2, 3, 4, 5">
     <TableRow>
         <TextView
             android:id="@+id/user_id"
@@ -27,12 +27,19 @@
             android:gravity="center"
             android:padding="10dp" />
         <TextView
-            android:id="@+id/user_code"
+            android:id="@+id/first_code"
             android:textSize="25sp"
             android:padding="10dp"
             android:gravity="center"
             android:textColor="#0e7d82"
             android:layout_column="4" />
+        <TextView
+            android:id="@+id/second_code"
+            android:textSize="25sp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="#0e7d82"
+            android:layout_column="5" />
 
 
     </TableRow>

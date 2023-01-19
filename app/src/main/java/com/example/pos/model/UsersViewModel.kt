@@ -10,17 +10,17 @@ class UsersViewModel(private val userRepository: UserRepository): ViewModel() {
 
     val inputName = MutableLiveData<String>()
     val inputRole = MutableLiveData<String>()
-    val inputCode = MutableLiveData<String>()
+    val firstCode = MutableLiveData<String>()
+    val secondCode = MutableLiveData<String>()
     fun getAllUsers(): LiveData<List<User>> {
         return userRepository.users
     }
 
     fun insertNewUser() {
         viewModelScope.launch {
-            userRepository.insert(User(0, inputName.value!!, inputRole.value!!, inputCode.value!!, "0"))
+            userRepository.insert(User(0, inputName.value!!, inputRole.value!!, firstCode.value!!, "0"))
             inputName.value = ""
-            inputCode.value = ""
-            inputCode.value = ""
+            firstCode.value = ""
         }
     }
 

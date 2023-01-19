@@ -15,8 +15,8 @@ class UsersAdapter(private val context: Context, private val listOfUsers: List<U
     class UserViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         val userID: TextView = view.findViewById(R.id.user_id)
         val userName: TextView = view.findViewById(R.id.user_name)
-        val userRole: TextView = view.findViewById(R.id.user_role)
-        val userCode: TextView = view.findViewById(R.id.user_code)
+        val userFirstCode: TextView = view.findViewById(R.id.first_code)
+        val userSecondCode: TextView = view.findViewById(R.id.second_code)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {

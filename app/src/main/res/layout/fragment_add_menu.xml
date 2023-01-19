@@ -67,6 +67,7 @@
                     android:layout_width="match_parent"
                     android:textSize="40sp"
                     android:padding="15dp"
+                    android:textColor="@color/black"
                     android:layout_height="match_parent"
                     android:text="Choose the type"/>
             </LinearLayout>
@@ -95,6 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/image_icon"
@@ -104,10 +106,10 @@
                 <TextView
                     android:id="@+id/add_img_text"
                     android:layout_marginLeft="20dp"
-                    android:textSize="30sp"
+                    android:textSize="35sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Capture image here"/>
+                    android:text="Capture image or upload here"/>
             </LinearLayout>
             <ImageView
                 android:id="@+id/item_img"
