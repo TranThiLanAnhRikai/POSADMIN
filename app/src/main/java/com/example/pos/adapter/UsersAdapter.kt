@@ -15,6 +15,7 @@ class UsersAdapter(private val context: Context, private val listOfUsers: List<U
     class UserViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         val userID: TextView = view.findViewById(R.id.user_id)
         val userName: TextView = view.findViewById(R.id.user_name)
+        val userRole: TextView = view.findViewById(R.id.user_role)
         val userFirstCode: TextView = view.findViewById(R.id.first_code)
         val userSecondCode: TextView = view.findViewById(R.id.second_code)
     }
@@ -31,7 +32,8 @@ class UsersAdapter(private val context: Context, private val listOfUsers: List<U
         holder.userID.text = user.id.toString()
         holder.userName.text = user.name
         holder.userRole.text = user.role
-        holder.userCode.text = user.firstCode
+        holder.userFirstCode.text = user.firstCode
+        holder.userSecondCode.text = user.secondCode
     }
 
     override fun getItemCount() = listOfUsers.size

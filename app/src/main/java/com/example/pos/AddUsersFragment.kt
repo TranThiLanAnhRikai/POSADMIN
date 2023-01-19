@@ -1,12 +1,17 @@
 package com.example.pos_admin
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.pos_admin.adapter.ShiftsAdapter
+import com.example.pos_admin.const.Role
 import com.example.pos_admin.data.PosAdminRoomDatabase
 import com.example.pos_admin.data.repository.UserRepository
 import com.example.pos_admin.databinding.FragmentAddUsersBinding
@@ -34,10 +39,21 @@ class AddUsersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.addUsersFragment = this
         binding?.usersViewModel = usersViewModel
-        val secondCode = binding?.secondCodeEdttxt
-        binding?.role?.setOnClickListener {
-            if (binding?.admin?.isChecked() == true) {
-                secondCode?.setVisibility(View.VISIBLE)
+        binding?.role?.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                usersViewModel.inputRole.value = Role.
+            }
+        }
+            if (binding?.admin?.isChecked == true) {
+                usersViewModel.inputRole.observe(viewLifecycleOwner, Observer { shifts ->
+
+                })
+                usersViewModel.inputRole.value = Role.ADMIN.roleName
+                Log.d(ContentValues.TAG, "role ${usersViewModel.inputRole.value}")
+            }
+            else {
+                usersViewModel.inputRole.value = Role.STAFF.roleName
+                Log.d(ContentValues.TAG, "role ${usersViewModel.inputRole.value}")
             }
         }
     }

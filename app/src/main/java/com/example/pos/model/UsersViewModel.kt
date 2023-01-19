@@ -1,5 +1,7 @@
 package com.example.pos_admin.model
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.pos_admin.data.entity.User
 import com.example.pos_admin.data.repository.UserRepository
@@ -7,18 +9,22 @@ import kotlinx.coroutines.launch
 
 
 class UsersViewModel(private val userRepository: UserRepository): ViewModel() {
-
     val inputName = MutableLiveData<String>()
     val inputRole = MutableLiveData<String>()
     val firstCode = MutableLiveData<String>()
     val secondCode = MutableLiveData<String>()
+
     fun getAllUsers(): LiveData<List<User>> {
         return userRepository.users
     }
 
     fun insertNewUser() {
+        Log.d(TAG, "name ${inputName.value}")
+        Log.d(TAG, "1code ${firstCode.value}")
+        Log.d(TAG, "2code ${secondCode.value}")
+
         viewModelScope.launch {
-            userRepository.insert(User(0, inputName.value!!, inputRole.value!!, firstCode.value!!, "0"))
+            userRepository.insert(User(0, inputName.value!!, inputRole.value!!, firstCode.value!!, secondCode.value!!))
             inputName.value = ""
             firstCode.value = ""
         }
