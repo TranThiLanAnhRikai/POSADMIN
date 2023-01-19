@@ -2,7 +2,6 @@ package com.example.pos_admin.model
 
 import androidx.lifecycle.*
 import com.example.pos_admin.data.entity.MenuItem
-import com.example.pos_admin.data.dao.MenuItemDao
 import com.example.pos_admin.data.repository.MenuItemRepository
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
@@ -14,7 +13,7 @@ class MenuViewModel(private val menuItemRepository: MenuItemRepository): ViewMod
     val image = MutableLiveData<String>()
     val _price = MutableLiveData<String>()
     val price: LiveData<String> = Transformations.map(_price) {
-        NumberFormat.getCurrencyInstance().format(it)
+        NumberFormat.getCurrencyInstance().format(it.toDouble())
     }
 
     fun insertItem() {

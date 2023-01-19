@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    app:cardBackgroundColor="@color/teal_700"
+    app:cardBackgroundColor="@color/dark_blue"
     app:cardElevation="6dp"
     android:focusable="true"
     app:cardCornerRadius="6dp">
@@ -51,7 +51,7 @@
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:text="@string/price" />
+                android:text="" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

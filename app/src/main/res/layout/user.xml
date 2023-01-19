@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1, 2, 3, 4">
+    <TableRow>
+        <TextView
+            android:id="@+id/user_id"
+            android:textSize="25sp"
+            android:layout_column="1"
+            android:gravity="center"
+            android:textColor="#0e7d82"
+            android:padding="10dp" />
         <TextView
             android:id="@+id/user_name"
-            android:textSize="30sp"
-            android:text="User Name"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
+            android:textSize="25sp"
+            android:layout_column="2"
+            android:gravity="center"
+            android:textColor="#0e7d82"
+            android:padding="10dp" />
         <TextView
             android:id="@+id/user_role"
-            android:textSize="30sp"
-            android:text="User Role"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
+            android:textSize="25sp"
+            android:layout_column="3"
+            android:textColor="#0e7d82"
+            android:gravity="center"
+            android:padding="10dp" />
         <TextView
             android:id="@+id/user_code"
-            android:textSize="30sp"
-            android:text="Login Code"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-    </LinearLayout>
+            android:textSize="25sp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="#0e7d82"
+            android:layout_column="4" />
 
 
-</layout>
+    </TableRow>
+</TableLayout>

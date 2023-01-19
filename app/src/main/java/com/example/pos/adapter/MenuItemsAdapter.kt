@@ -1,5 +1,6 @@
 package com.example.pos_admin.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.util.Base64
@@ -30,11 +31,12 @@ class MenuItemsAdapter(private val context: Context, private val listOfItems: Li
         return MenuItemViewHolder(adapterLayout)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MenuItemViewHolder, position: Int) {
         val item = listOfItems[position]
-        holder.itemName.text = item.name
-        holder.itemType.text = item.type.toString()
-        holder.itemPrice.text = item.price.toString()
+        holder.itemName.text = "Name: " + item.name
+        holder.itemType.text = "Type: " + item.type
+        holder.itemPrice.text = "Price: $" + item.price
         val decodedString = Base64.decode(item.image, Base64.DEFAULT)
         val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
         Glide.with(context)

@@ -12,6 +12,8 @@ data class User (
     val name: String,
     @ColumnInfo(name="user_role")
     val role: String,
-    @ColumnInfo(name="user_code")
-    val code: String
+    @ColumnInfo(name="user_first_code")
+    val firstCode: String,
+    @ColumnInfo(name="user_second_code")
+    val secondCode: String
 )

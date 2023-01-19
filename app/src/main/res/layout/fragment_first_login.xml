@@ -5,8 +5,8 @@
     tools:context=".StartFragment">
     <data>
         <variable
-            name="viewModel"
-            type="com.example.pos_admin.model.ShiftsViewModel" />
+            name="loginViewModel"
+            type="com.example.pos_admin.model.LoginViewModel" />
         <variable
             name="firstLoginFragment"
             type="com.example.pos_admin.FirstLoginFragment" />
@@ -43,7 +43,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/dark_blue"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                android:textSize="40dp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="15dp"/>
@@ -54,8 +54,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_edit_text"
                 android:hint="Login Code"
-                android:paddingStart="15dp"
+                android:padding="10dp"
                 android:textSize="40dp"
+                android:text="@={loginViewModel.firstLoginCode}"
                 android:layout_margin="8dp"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -63,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
-                android:padding="16dp"
+                android:padding="10dp"
                 android:textColor="@color/dark_blue"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"

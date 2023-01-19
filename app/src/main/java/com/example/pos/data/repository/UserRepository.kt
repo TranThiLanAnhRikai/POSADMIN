@@ -1,5 +1,6 @@
 package com.example.pos_admin.data.repository
 
+import androidx.lifecycle.LiveData
 import com.example.pos_admin.data.dao.UserDao
 import com.example.pos_admin.data.entity.User
 
@@ -8,6 +9,10 @@ import com.example.pos_admin.data.entity.User
 class UserRepository(private val userDao: UserDao) {
 
         val users = userDao.getAllUsers()
+
+    fun getUser(code: String): LiveData<User> {
+        return userDao.getUser(code)
+    }
 
         suspend fun insert(user: User) {
             return userDao.insert(user)

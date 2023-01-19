@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.pos_admin.data.entity.Shift
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 import java.util.*
 import androidx.lifecycle.MutableLiveData
 import com.example.pos_admin.data.repository.ShiftRepository
