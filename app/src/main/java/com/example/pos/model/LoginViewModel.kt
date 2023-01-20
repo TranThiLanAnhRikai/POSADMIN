@@ -1,5 +1,8 @@
 package com.example.pos_admin.model
 
+import android.content.ContentValues.TAG
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -10,26 +13,31 @@ import com.example.pos_admin.data.repository.UserRepository
 
 class LoginViewModel(private val userRepository: UserRepository): ViewModel() {
     val firstLoginCode = MutableLiveData<String>()
-    var user: User? = null
+    var users: LiveData<List<User>>? = null
     fun isFirstLoginValid(): Boolean {
-
-        firstLoginCode.value?.let {
-            user = userRepository.getUser(it).value
-            if (user == null) {
-                return false
+     Log.d(TAG, "1code ${firstLoginCode.value}")
+        users = userRepository.users
+        Log.d(TAG, "users ${users!!.value}")
+            /*)
+            if (user != null) {
+                Log.d(TAG, "use")
+                return true
             }
-        }
+            return false*/
         return true
+
     }
 
-    fun nextFragment(): Destination {
-        if (user != null && user?.role == Role.STAFF.roleName) {
-            return Destination.STAFF
+
+   fun nextFragment() {
+/*        return if (user != null && user?.role == Role.STAFF.roleName) {
+            Log.d(TAG, "user ${user!!.role}")
+            Destination.STAFF
+        } else {
+            Destination.NON_STAFF
         }
-        else {
-            return Destination.NON_STAFF
-        }
-    }
+    }*/
+}
 }
 
 class LoginViewModelFactory(private val userRepository: UserRepository): ViewModelProvider.Factory{

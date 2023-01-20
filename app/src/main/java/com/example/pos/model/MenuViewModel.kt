@@ -31,6 +31,10 @@ class MenuViewModel(private val menuItemRepository: MenuItemRepository): ViewMod
         return menuItemRepository.items
     }
 
+    fun getMenuItems(type: String): LiveData<List<MenuItem>> {
+        return menuItemRepository.getMenuItems(type)
+    }
+
 }
 
 class MenuViewModelFactory(private val menuItemRepository: MenuItemRepository): ViewModelProvider.Factory{

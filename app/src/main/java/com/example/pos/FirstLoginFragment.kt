@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
 import com.example.pos_admin.const.Destination
 import com.example.pos_admin.data.PosAdminRoomDatabase
 import com.example.pos_admin.data.repository.UserRepository
@@ -23,7 +24,7 @@ class FirstLoginFragment : Fragment() {
 
     private var binding: FragmentFirstLoginBinding? = null
     private lateinit var loginViewModel: LoginViewModel
-    lateinit var database: PosAdminRoomDatabase
+
 
 
     override fun onCreateView(
@@ -36,9 +37,6 @@ class FirstLoginFragment : Fragment() {
         val repository = UserRepository(dao)
         val factory = LoginViewModelFactory(repository)
         loginViewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
-/*        database = Room.databaseBuilder(requireContext(), PosAdminRoomDatabase::class.java, "shifts_database.db")
-            .build()*/
-
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
 
@@ -50,24 +48,28 @@ class FirstLoginFragment : Fragment() {
         binding?.firstLoginFragment = this
         binding?.loginViewModel = loginViewModel
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }
 
     fun nextScreen() {
-        if (loginViewModel.isFirstLoginValid()) {
+
+        /*if (!loginViewModel.isFirstLoginValid()) {
             Toast.makeText(requireContext(), "The login code is invalid. Please try again.", Toast.LENGTH_SHORT).show()
         }
         else {
             val destination = loginViewModel.nextFragment()
             Log.d(TAG, "destination $destination")
             if (destination == Destination.STAFF) {
-
+                findNavController().navigate(R.id.action_firstLoginFragment_to_orderFragment)
             }
             else {
                 findNavController().navigate(R.id.action_firstLoginFragment_to_secondLoginFragment)
             }
         }
+    }*/loginViewModel.isFirstLoginValid()
+        findNavController().navigate(R.id.action_firstLoginFragment_to_secondLoginFragment)
     }
 }

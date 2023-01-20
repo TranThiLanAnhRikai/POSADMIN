@@ -11,6 +11,10 @@ class MenuItemRepository(private val menuItemDao: MenuItemDao) {
 
     val items = menuItemDao.getAllMenuItems()
 
+    fun getMenuItems(type: String): LiveData<List<MenuItem>> {
+        return menuItemDao.getMenuItems(type)
+    }
+
     fun getMenuItem(id: Int): LiveData<MenuItem> {
         return menuItemDao.getMenuItem(id)
     }
