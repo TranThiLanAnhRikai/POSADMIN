@@ -7,7 +7,7 @@ import com.example.pos_admin.data.dao.MenuItemDao
 import com.example.pos_admin.data.dao.NotificationDao
 import com.example.pos_admin.data.dao.ShiftDao
 import com.example.pos_admin.data.dao.UserDao
-import com.example.pos_admin.data.entity.MenuItem
+import com.example.pos.data.entity.MenuItem
 import com.example.pos_admin.data.entity.Notification
 import com.example.pos_admin.data.entity.Shift
 import com.example.pos_admin.data.entity.User

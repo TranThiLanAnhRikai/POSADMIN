@@ -1,27 +1,30 @@
 package com.example.pos.data.repository
 
+
 import androidx.lifecycle.LiveData
-import com.example.pos.data.dao.CartDao
-import com.example.pos.data.entity.Cart
+import com.example.pos.data.dao.CartItemDao
+import com.example.pos.data.entity.CartItem
 
 
-class CartRepository(private val cartDao: CartDao) {
-    val carts = cartDao.getCarts()
+class CartItemRepository(private val cartItemDao: CartItemDao) {
 
-
-    suspend fun insert(cart: Cart) {
-        return cartDao.insert(cart)
+    fun getCart(orderNumber: Int): LiveData<List<CartItem>> {
+        return cartItemDao.getCart(orderNumber)
     }
 
-    suspend fun update(cart: Cart) {
-        return cartDao.update(cart)
+    suspend fun insert(cartItem: CartItem) {
+        return cartItemDao.insert(cartItem)
     }
 
-    suspend fun delete(cart: Cart) {
-        return cartDao.delete(cart)
+    suspend fun update(cartItem: CartItem) {
+        return cartItemDao.update(cartItem)
+    }
+
+    suspend fun delete(cartItem: CartItem) {
+        return cartItemDao.delete(cartItem)
     }
     suspend fun deleteAll() {
-        return cartDao.deleteAll()
+        return cartItemDao.deleteAll()
     }
 
 }

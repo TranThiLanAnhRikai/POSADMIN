@@ -1,7 +1,7 @@
 package com.example.pos_admin.model
 
 import androidx.lifecycle.*
-import com.example.pos_admin.data.entity.MenuItem
+import com.example.pos.data.entity.MenuItem
 import com.example.pos_admin.data.repository.MenuItemRepository
 import kotlinx.coroutines.launch
 import java.text.NumberFormat

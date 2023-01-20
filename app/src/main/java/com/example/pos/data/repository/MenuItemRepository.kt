@@ -2,7 +2,7 @@ package com.example.pos_admin.data.repository
 
 import androidx.lifecycle.LiveData
 import com.example.pos_admin.data.dao.MenuItemDao
-import com.example.pos_admin.data.entity.MenuItem
+import com.example.pos.data.entity.MenuItem
 
 
 /*Repository for menu_item class */

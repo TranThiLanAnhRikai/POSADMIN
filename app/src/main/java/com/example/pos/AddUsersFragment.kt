@@ -1,6 +1,7 @@
 package com.example.pos_admin
 
 import android.content.ContentValues
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -39,23 +40,17 @@ class AddUsersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.addUsersFragment = this
         binding?.usersViewModel = usersViewModel
-        binding?.role?.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                usersViewModel.inputRole.value = Role.
-            }
-        }
-            if (binding?.admin?.isChecked == true) {
-                usersViewModel.inputRole.observe(viewLifecycleOwner, Observer { shifts ->
+        binding?.role?.setOnCheckedChangeListener { _, checkedId ->
+            when(checkedId) {
+                R.id.admin -> {
+                    usersViewModel.inputRole.value = Role.ADMIN.roleName
+                    binding?.secondCodeEdttxt?.visibility = View.VISIBLE
+                }
 
-                })
-                usersViewModel.inputRole.value = Role.ADMIN.roleName
-                Log.d(ContentValues.TAG, "role ${usersViewModel.inputRole.value}")
-            }
-            else {
-                usersViewModel.inputRole.value = Role.STAFF.roleName
-                Log.d(ContentValues.TAG, "role ${usersViewModel.inputRole.value}")
+                else -> usersViewModel.inputRole.value = Role.STAFF.roleName
             }
         }
+
     }
     override fun onDestroyView() {
         super.onDestroyView()

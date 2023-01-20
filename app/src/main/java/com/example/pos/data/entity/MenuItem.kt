@@ -1,4 +1,4 @@
-package com.example.pos_admin.data.entity
+package com.example.pos.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

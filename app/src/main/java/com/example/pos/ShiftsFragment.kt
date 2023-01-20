@@ -63,7 +63,7 @@ class ShiftsFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         val selectedTimeStamp = calendar.timeInMillis
         displayFormattedDate(selectedTimeStamp)
         val selectedDate = formatter.format(selectedTimeStamp).toString()
-        binding?.shiftsTime?.setOnCheckedChangeListener{group, checkedId ->
+        binding?.shiftsTime?.setOnCheckedChangeListener{ _, checkedId ->
             when(checkedId) {
                 R.id.morning_shift -> {
                     showShifts(selectedDate, 1)
